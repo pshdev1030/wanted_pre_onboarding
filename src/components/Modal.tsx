@@ -62,6 +62,7 @@ const ButtonWrapper = styled.div`
 
   & button {
     all: unset;
+    cursor: pointer;
     padding: 5px;
     font-size: 20px;
   }

@@ -29,7 +29,10 @@ function App() {
         <div>{toggleOn ? "Toggle Switch ON" : "Toggle Switch OFF"}</div>
       </>
       <>
-        <button onClick={onClickOpenModal}>Open Modal!</button>
+        <h1>Modal</h1>
+        <ModalOpenButton onClick={onClickOpenModal}>
+          Open Modal!
+        </ModalOpenButton>
       </>
       <>
         <Tab />
@@ -42,6 +45,15 @@ function App() {
 }
 
 export default App;
+
+const ModalOpenButton = styled.button`
+  all: unset;
+  padding: 20px 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  background: #8b00ff;
+`;
 
 const ModalDummyContent = styled.div`
   color: #8b00ff;
