@@ -5,6 +5,7 @@ import ClickToEdit from "./component/ClickToEdit";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
+import Template from "./component/Template";
 import Toggle from "./component/Toggle";
 import { tabsType } from "./types/tab";
 import { tagsType } from "./types/tags";
@@ -121,19 +122,19 @@ function App() {
   );
 
   return (
-    <>
-      <>
+    <AppWrapper>
+      <Template>
         <h1>Toggle</h1>
         <Toggle onChange={onClickToggleButton} />
         <div>{toggleOn ? "Toggle Switch ON" : "Toggle Switch OFF"}</div>
-      </>
-      <>
+      </Template>
+      <Template>
         <h1>Modal</h1>
         <ModalOpenButton onClick={onClickOpenModal}>
           Open Modal!
         </ModalOpenButton>
-      </>
-      <>
+      </Template>
+      <Template>
         <h1>Tag</h1>
         <Tag
           addTag={addTag}
@@ -142,12 +143,12 @@ function App() {
           onChange={onChange}
           tagValue={tagValue}
         />
-      </>
-      <>
+      </Template>
+      <Template>
         <h1>Tab</h1>
         <Tab tabsArray={tabsArray} onClickTabs={onClickTabs} />
-      </>
-      <>
+      </Template>
+      <Template>
         <h1>Click To Edit</h1>
         <ClickToEdit
           isNameEditable={isNameEditable}
@@ -162,8 +163,8 @@ function App() {
         <div>
           이름 {name} 나이 {age}
         </div>
-      </>
-      <>
+      </Template>
+      <Template>
         <h1>Auto Complete</h1>
         <AutoComplete
           autoCompleteDatas={autoCompleteDatas.current}
@@ -171,20 +172,26 @@ function App() {
           onChange={onChangeSearchValue}
           setSearchValue={setSearchValue}
         />
-      </>
+      </Template>
       <Modal isOpen={onOpenModal} onCloseModal={onClickCloseModal}>
         <ModalDummyContent>Hello Code State!</ModalDummyContent>
       </Modal>
-    </>
+    </AppWrapper>
   );
 }
 
 export default App;
 
+const AppWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const ModalOpenButton = styled.button`
   all: unset;
   padding: 20px 40px;
   border-radius: 30px;
+  width: 100px;
   cursor: pointer;
   color: white;
   background: #8b00ff;

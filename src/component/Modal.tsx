@@ -59,7 +59,6 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
-
   & button {
     all: unset;
     cursor: pointer;

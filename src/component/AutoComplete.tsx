@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useMemo } from "react";
+
 interface AutoCompleteComponentType {
   autoCompleteDatas: string[];
   searchValue: string;
@@ -40,11 +41,12 @@ const AutoComplete = ({
 
 export default AutoComplete;
 
-const AutoCompleteWrapper = styled.div`
+export const AutoCompleteWrapper = styled.div`
   width: max-content;
+  position: relative;
 `;
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
   border: 2px solid #ccc;
 
   & input {
@@ -61,13 +63,14 @@ const InputWrapper = styled.div`
   }
 `;
 
-const CompletedDatasWrapper = styled.div`
-  width: 100%;
-  box-shadow: 5px 5px 5px 5px #ccc;
+export const CompletedDatasWrapper = styled.div`
+  box-shadow: 0 5px 5px 5px #ccc;
   border-bottom-left-radius: 10px;
+  position: absolute;
+  width: 100%;
   border-bottom-right-radius: 10px;
 `;
-const CompletedData = styled.div`
+export const CompletedData = styled.div`
   width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
