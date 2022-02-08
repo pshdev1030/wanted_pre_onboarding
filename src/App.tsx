@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-import React, { useCallback, useState } from "react";
-import Modal from "./components/Modal";
-import Tab from "./components/Tab";
-import Toggle from "./components/Toggle";
+import React, { useCallback, useRef, useState } from "react";
+import Modal from "./component/Modal";
+import Tag from "./component/Tag";
+import Toggle from "./component/Toggle";
+import { tagsType } from "./types/tags";
 
 function App() {
   const [toggleOn, setToggleOn] = useState<boolean>(false);
@@ -21,6 +22,35 @@ function App() {
     setOpenModal(false);
   }, []);
 
+  const [tagValue, setTagValue] = useState<string>("");
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setTagValue(e.target.value);
+    },
+    [tagValue]
+  );
+  const [tags, setTags] = useState<[] | tagsType[]>([]);
+  const tagIdRef = useRef<number>(0);
+
+  const addTag = useCallback(
+    (e: React.ChangeEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (tagValue === "") return;
+      const newTag = { val: tagValue, id: tagIdRef.current++ };
+      const newTags = [...tags, newTag];
+      setTags(newTags);
+      setTagValue("");
+    },
+    [tags, tagValue]
+  );
+  const removeTag = useCallback(
+    (id: number) => {
+      const newTags = tags.filter((tag) => tag.id !== id);
+      setTags(newTags);
+    },
+    [tags]
+  );
+
   return (
     <>
       <>
@@ -35,7 +65,14 @@ function App() {
         </ModalOpenButton>
       </>
       <>
-        <Tab />
+        <h1>Tag</h1>
+        <Tag
+          addTag={addTag}
+          removeTag={removeTag}
+          tags={tags}
+          onChange={onChange}
+          tagValue={tagValue}
+        />
       </>
       <Modal isOpen={onOpenModal} onCloseModal={onClickCloseModal}>
         <ModalDummyContent>Hello Code State!</ModalDummyContent>
