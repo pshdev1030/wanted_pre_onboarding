@@ -362,3 +362,19 @@ CompltedDatasWrapper 에는 필터링된 검색어 목록이 렌더링됩니다.
 또한 이 CompletedDatasWrapper에 `position:absolute`를 주어 검색어 목록의 길이만큼 컴포넌트가 위로 올라가는 버그를 해결하였습니다.
 
 X 버튼을 클릭하여서 초기화하는 기능과 클릭을 통해 해당 검색어를 searchValue로 설정하는 기능을 추가하였습니다.
+
+# 실행 방법
+
+CRA를 사용하여 만들었습니다.
+
+로컬환경에서 실행시
+
+```
+npm run start
+```
+
+## 배포된 링크
+
+github-pages를 이용하여 배포하였습니다.
+
+[원티드 프론트엔드 프리온보딩 사전과제](https://pshdev1030.github.io/wanted_pre_onboarding/)
