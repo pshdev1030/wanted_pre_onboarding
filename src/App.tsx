@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { useCallback, useRef, useState } from "react";
 import AutoComplete from "./component/AutoComplete";
 import ClickToEdit from "./component/ClickToEdit";
@@ -7,6 +6,12 @@ import Tab from "./component/Tab";
 import Tag from "./component/Tag";
 import Template from "./component/Template";
 import Toggle from "./component/Toggle";
+import {
+  AppWrapper,
+  ClickToEditDataHolder,
+  ModalDummyContent,
+  ModalOpenButton,
+} from "./style/App";
 import { tabsType } from "./types/tab";
 import { tagsType } from "./types/tags";
 
@@ -181,29 +186,3 @@ function App() {
 }
 
 export default App;
-
-const AppWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ModalOpenButton = styled.button`
-  all: unset;
-  padding: 20px 40px;
-  border-radius: 30px;
-  width: 100px;
-  cursor: pointer;
-  color: white;
-  background: #8b00ff;
-`;
-
-const ModalDummyContent = styled.div`
-  color: #8b00ff;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-`;
-
-const ClickToEditDataHolder = styled.div`
-  text-align: center;
-`;

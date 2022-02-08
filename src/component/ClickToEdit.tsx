@@ -1,5 +1,9 @@
-import styled from "@emotion/styled";
 import React from "react";
+import {
+  ClickToEditElement,
+  ClickToEditInput,
+  ClickToEditP,
+} from "../style/ClickToEdit";
 
 interface ClickToEditComponentType {
   isNameEditable: boolean;
@@ -61,25 +65,3 @@ const ClickToEdit = ({
   );
 };
 export default ClickToEdit;
-
-const ClickToEditElement = styled.div`
-  display: flex;
-  align-items: center;
-
-  & .label {
-    margin-right: 10px;
-  }
-`;
-
-const ClickToEditInput = styled.input`
-  padding: 15px;
-  font-size: 15px;
-  border-radius: 20px;
-  &:focus {
-    outline: 2px solid #005566;
-  }
-`;
-
-const ClickToEditP = styled.p`
-  min-width: 200px;
-`;
