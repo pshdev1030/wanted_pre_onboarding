@@ -66,8 +66,8 @@ function App() {
 
   // ClickToEdit
 
-  const [name, setName] = useState<string>("");
-  const [isNameEditable, setisNameEditable] = useState<boolean>(true);
+  const [name, setName] = useState<string>("박성현");
+  const [isNameEditable, setisNameEditable] = useState<boolean>(false);
   const changeIsNameEditable = useCallback(() => {
     setisNameEditable((prev) => !prev);
   }, [isNameEditable]);
@@ -75,8 +75,8 @@ function App() {
     setName(e.target.value);
   }, []);
 
-  const [age, setAge] = useState<string>("");
-  const [isAgeEditable, setisAgeEditable] = useState<boolean>(true);
+  const [age, setAge] = useState<string>("25");
+  const [isAgeEditable, setisAgeEditable] = useState<boolean>(false);
   const changeIsAgeEditable = useCallback(() => {
     setisAgeEditable((prev) => !prev);
   }, [isAgeEditable]);
