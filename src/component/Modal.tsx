@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import styled from "@emotion/styled";
 
-interface ModalType {
+interface ModalComponentType {
   children: React.ReactNode;
   isOpen: boolean;
   onCloseModal: () => void;
 }
-const Modal = ({ children, isOpen, onCloseModal }: ModalType) => {
+const Modal = ({ children, isOpen, onCloseModal }: ModalComponentType) => {
   const onClickModalContent = useCallback((e: any) => {
     e.stopPropagation();
   }, []);

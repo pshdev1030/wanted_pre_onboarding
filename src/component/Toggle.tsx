@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-interface ToggleType {
+interface ToggleComponentType {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Toggle = ({ onChange }: ToggleType) => {
+const Toggle = ({ onChange }: ToggleComponentType) => {
   return (
     <>
       <ToggleWrapper>
