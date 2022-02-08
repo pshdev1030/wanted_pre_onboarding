@@ -3,10 +3,14 @@ export const TabWrapper = styled.div`
   width: 400px;
 `;
 
-export const TabHeaderWrapper = styled.div`
+interface TabHeaderWrapperType {
+  size: number;
+}
+
+export const TabHeaderWrapper = styled.div<TabHeaderWrapperType>`
   display: flex;
   & > div {
-    width: calc(100% / 3);
+    width: ${(props) => `calc(100%/${props.size})`};
     background: #ccc;
     padding: 20px;
     cursor: pointer;

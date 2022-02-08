@@ -10,7 +10,7 @@ interface TabComponentType {
 const Tab = ({ tabsArray, onClickTabs }: TabComponentType) => {
   return (
     <TabWrapper>
-      <TabHeaderWrapper>
+      <TabHeaderWrapper size={tabsArray.length}>
         {tabsArray.map((tab) => (
           <div
             className={tab.active ? "active" : ""}
