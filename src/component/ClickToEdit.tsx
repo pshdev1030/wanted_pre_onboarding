@@ -36,7 +36,7 @@ const ClickToEdit = ({
           </form>
         ) : (
           <ClickToEditP onDoubleClick={changeIsNameEditable}>
-            {name}
+            {name === "" ? "Double click to enter the value." : name}
           </ClickToEditP>
         )}
       </ClickToEditElement>
@@ -52,7 +52,9 @@ const ClickToEdit = ({
             ></ClickToEditInput>
           </form>
         ) : (
-          <ClickToEditP onDoubleClick={changeIsAgeEditable}>{age}</ClickToEditP>
+          <ClickToEditP onDoubleClick={changeIsAgeEditable}>
+            {age === "" ? "Double click to enter the value." : age}
+          </ClickToEditP>
         )}
       </ClickToEditElement>
     </div>
