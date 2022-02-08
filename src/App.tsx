@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import React, { useCallback, useRef, useState } from "react";
+import ClickToEdit from "./component/ClickToEdit";
 import Modal from "./component/Modal";
+import Tab from "./component/Tab";
 import Tag from "./component/Tag";
 import Toggle from "./component/Toggle";
 import { tagsType } from "./types/tags";
@@ -51,6 +53,24 @@ function App() {
     [tags]
   );
 
+  const [name, setName] = useState<string>("");
+  const [isNameEditable, setisNameEditable] = useState<boolean>(true);
+  const changeIsNameEditable = useCallback(() => {
+    setisNameEditable((prev) => !prev);
+  }, [isNameEditable]);
+  const onChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  }, []);
+
+  const [age, setAge] = useState<string>("");
+  const [isAgeEditable, setisAgeEditable] = useState<boolean>(true);
+  const changeIsAgeEditable = useCallback(() => {
+    setisAgeEditable((prev) => !prev);
+  }, [isAgeEditable]);
+  const onChangeAge = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setAge(e.target.value);
+  }, []);
+
   return (
     <>
       <>
@@ -73,6 +93,26 @@ function App() {
           onChange={onChange}
           tagValue={tagValue}
         />
+      </>
+      <>
+        <h1>Tab</h1>
+        <Tab />
+      </>
+      <>
+        <h1>Click To Edit</h1>
+        <ClickToEdit
+          isNameEditable={isNameEditable}
+          name={name}
+          age={age}
+          isAgeEditable={isAgeEditable}
+          changeIsNameEditable={changeIsNameEditable}
+          changeIsAgeEditable={changeIsAgeEditable}
+          onChangeAge={onChangeAge}
+          onChangeName={onChangeName}
+        />
+        <div>
+          이름 {name} 나이 {age}
+        </div>
       </>
       <Modal isOpen={onOpenModal} onCloseModal={onClickCloseModal}>
         <ModalDummyContent>Hello Code State!</ModalDummyContent>
