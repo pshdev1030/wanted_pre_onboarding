@@ -160,9 +160,9 @@ function App() {
           onChangeAge={onChangeAge}
           onChangeName={onChangeName}
         />
-        <div>
+        <ClickToEditDataHolder>
           이름 {name} 나이 {age}
-        </div>
+        </ClickToEditDataHolder>
       </Template>
       <Template>
         <h1>Auto Complete</h1>
@@ -202,4 +202,8 @@ const ModalDummyContent = styled.div`
   font-size: 20px;
   text-align: center;
   font-weight: bold;
+`;
+
+const ClickToEditDataHolder = styled.div`
+  text-align: center;
 `;

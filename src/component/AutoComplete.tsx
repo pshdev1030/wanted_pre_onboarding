@@ -27,14 +27,15 @@ const AutoComplete = ({
         <input value={searchValue} onChange={onChange}></input>
         <button onClick={() => setSearchValue("")}>×</button>
       </InputWrapper>
-      <CompletedDatasWrapper>
-        {result.length !== 1 &&
-          result.map((data, index) => (
+      {result.length > 1 && (
+        <CompletedDatasWrapper>
+          {result.map((data, index) => (
             <CompletedData key={index} onClick={() => setSearchValue(data)}>
               {data}
             </CompletedData>
           ))}
-      </CompletedDatasWrapper>
+        </CompletedDatasWrapper>
+      )}
     </AutoCompleteWrapper>
   );
 };
