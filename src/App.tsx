@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import React, { useCallback, useRef, useState } from "react";
+import AutoComplete from "./component/AutoComplete";
 import ClickToEdit from "./component/ClickToEdit";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
 import Toggle from "./component/Toggle";
+import { tabsType } from "./types/tab";
 import { tagsType } from "./types/tags";
 
 function App() {
+  // ToggleSwith
   const [toggleOn, setToggleOn] = useState<boolean>(false);
   const onClickToggleButton = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +19,7 @@ function App() {
     [toggleOn]
   );
 
+  // Modal
   const [onOpenModal, setOpenModal] = useState<boolean>(false);
   const onClickOpenModal = useCallback(() => {
     setOpenModal(true);
@@ -24,6 +28,7 @@ function App() {
     setOpenModal(false);
   }, []);
 
+  // Tag
   const [tagValue, setTagValue] = useState<string>("");
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +58,8 @@ function App() {
     [tags]
   );
 
+  // ClickToEdit
+
   const [name, setName] = useState<string>("");
   const [isNameEditable, setisNameEditable] = useState<boolean>(true);
   const changeIsNameEditable = useCallback(() => {
@@ -70,6 +77,48 @@ function App() {
   const onChangeAge = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setAge(e.target.value);
   }, []);
+
+  // Tabs
+
+  const [tabsArray, setTabsArray] = useState<tabsType[]>([
+    { id: 1, title: "Tab1", content: "Tab menu 1", active: true },
+    { id: 2, title: "Tab2", content: "Tab menu 2", active: false },
+    { id: 3, title: "Tab3", content: "Tab menu 3", active: false },
+  ]);
+
+  const onClickTabs = useCallback(
+    (id) => {
+      const prevIndex = tabsArray.findIndex((tab) => tab.active === true);
+      const nextIndex = tabsArray.findIndex((tab) => tab.id === id);
+      const newTabsArray = tabsArray.slice();
+      newTabsArray[prevIndex].active = false;
+      newTabsArray[nextIndex].active = true;
+      setTabsArray(newTabsArray);
+    },
+    [tabsArray]
+  );
+
+  // AutoComplete
+  const autoCompleteDatas = useRef<string[]>([
+    "A급중고",
+    "B급중고",
+    "antique",
+    "Vintage",
+    "Refresh",
+    "React",
+    "Frontend",
+    "Backend",
+    "nestjs",
+    "express",
+    "styled component",
+  ]);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const onChangeSearchValue = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+    },
+    []
+  );
 
   return (
     <>
@@ -96,7 +145,7 @@ function App() {
       </>
       <>
         <h1>Tab</h1>
-        <Tab />
+        <Tab tabsArray={tabsArray} onClickTabs={onClickTabs} />
       </>
       <>
         <h1>Click To Edit</h1>
@@ -113,6 +162,15 @@ function App() {
         <div>
           이름 {name} 나이 {age}
         </div>
+      </>
+      <>
+        <h1>Auto Complete</h1>
+        <AutoComplete
+          autoCompleteDatas={autoCompleteDatas.current}
+          searchValue={searchValue}
+          onChange={onChangeSearchValue}
+          setSearchValue={setSearchValue}
+        />
       </>
       <Modal isOpen={onOpenModal} onCloseModal={onClickCloseModal}>
         <ModalDummyContent>Hello Code State!</ModalDummyContent>
