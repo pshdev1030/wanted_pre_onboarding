@@ -28,6 +28,13 @@ export const CompletedDatasWrapper = styled.div`
   position: absolute;
   width: 100%;
   border-bottom-right-radius: 10px;
+  max-height: 150px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const CompletedData = styled.div`
   width: 100%;
