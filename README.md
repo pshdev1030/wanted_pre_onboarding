@@ -438,7 +438,7 @@ CRA를 사용하여 만들었습니다.
 
 ```
 git clone https://github.com/pshdev1030/wanted_pre_onboarding.git '폴더명'
-// '폴더명'으로 이동하여
+cd '폴더명'
 npm run start
 ```
 
