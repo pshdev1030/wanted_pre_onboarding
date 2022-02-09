@@ -335,7 +335,7 @@ const AutoComplete = ({
         <input value={searchValue} onChange={onChange}></input>
         <button onClick={() => setSearchValue("")}>×</button>
       </InputWrapper>
-      {result.length > 0 && (
+      {result.length > 1 && (
         <CompletedDatasWrapper>
           {result.map((data, index) => (
             <CompletedData key={index} onClick={() => setSearchValue(data)}>
