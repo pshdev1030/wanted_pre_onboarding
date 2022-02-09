@@ -437,6 +437,8 @@ CRA를 사용하여 만들었습니다.
 로컬환경에서 실행시
 
 ```
+git clone https://github.com/pshdev1030/wanted_pre_onboarding.git '폴더명'
+// '폴더명'으로 이동하여
 npm run start
 ```
 
